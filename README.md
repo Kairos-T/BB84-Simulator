@@ -1,4 +1,4 @@
-# bb84-simulation
+# BB84 QKD Simulation
 This repository contains a Python script that simulates Quantum Key Distribution (QKD) using the BB84 protocol as part of my group's cryptography assignment. The BB84 protocol is a quantum key distribution scheme that allows two parties (Alice and Bob) to securely exchange cryptographic keys. 
 
 ## Getting Started
