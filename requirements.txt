@@ -4,3 +4,4 @@ qiskit==0.45.0
 qiskit_ibmq_provider==0.20.2
 qiskit_ignis==0.7.1
 qiskit_terra==0.45.0
+qiskit-aer==0.13.0
