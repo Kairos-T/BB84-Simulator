@@ -32,13 +32,13 @@ def encode_message(bits: np.ndarray, basis: np.ndarray) -> list:
     """
     message = []
     for i in range(NUM_QUBITS):
-        qc = QuantumCircuit(1, 1)
-        if basis[i] == 0:  # Prepare qubit in Z-basis
+        qc = QuantumCircuit(1, 1) # 1 qubit and 1 classical bit - message and measurement respectively
+        if basis[i] == 0:  # Prepare qubit in Z-basis (i.e. |0> or |1>)
             if bits[i] == 1:
-                qc.x(0)
-        else:  # Prepare qubit in X-basis
+                qc.x(0) # Bit flip (Pauli-X gate)
+        else:  # Prepare qubit in X-basis (i.e. |+> or |->)
             if bits[i] == 0:
-                qc.h(0)
+                qc.h(0) # Hadamard gate
             else:
                 qc.x(0)
                 qc.h(0)
@@ -100,7 +100,7 @@ def remove_garbage(a_basis: np.ndarray, b_basis: np.ndarray, bits: np.ndarray) -
     Returns:
     list: The filtered bits.
     """
-    return [bits[q] for q in range(NUM_QUBITS) if a_basis[q] == b_basis[q]] # Removes bits that do not match
+    return [bits[q] for q in range(NUM_QUBITS) if a_basis[q] == b_basis[q]]  # Removes bits that do not match
 
 
 def check_keys(key1: list, key2: list) -> None:
@@ -114,8 +114,8 @@ def check_keys(key1: list, key2: list) -> None:
     Returns:
     None
     """
-    print("\nAlice's key: " , key1)
-    print("Bob's key: " , key2)
+    print("\nAlice's key: ", key1)
+    print("Bob's key: 5  ", key2)
     if key1 == key2:
         print("Keys are the same and secure.")
     else:
@@ -185,8 +185,8 @@ def main():
     None
     """
 
-    print("-" * 50 + "\n\n")
-    print(text2art("BB84"))
+    print("-" * 50 + "\n")
+    print(text2art("BB84", font="small"))
     print("-" * 50)
     print("CTG Assignment CSF02 2023\n")
     print(
@@ -227,12 +227,13 @@ def main():
                 alice_basis = generate_bits(NUM_QUBITS)
                 message = encode_message(alice_bits, alice_basis)
                 eavesdropper_basis = generate_bits(NUM_QUBITS)
-                message = simulate_eavesdropping(message, eavesdropper_basis, 0.1)
+                message = simulate_eavesdropping(
+                    message, eavesdropper_basis, 0.1)
                 bob_basis = generate_bits(NUM_QUBITS)
                 bob_results = measure_message(message, bob_basis)
                 alice_key = remove_garbage(alice_basis, bob_basis, alice_bits)
                 bob_key = remove_garbage(alice_basis, bob_basis, bob_results)
-            
+
                 check_keys(alice_key, bob_key)
             print()
         elif choice == "5":
