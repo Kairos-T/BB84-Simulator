@@ -115,7 +115,7 @@ def check_keys(key1: list, key2: list) -> None:
     None
     """
     print("\nAlice's key: ", key1)
-    print("Bob's key: 5  ", key2)
+    print("Bob's key:   ", key2)
     if key1 == key2:
         print("Keys are the same and secure.")
     else:
@@ -204,11 +204,11 @@ def main():
     num_iterations = 5  # Set the number of iterations
     while True:
         print("Choose an option:")
-        print("1. Simulate with 0 error")
-        print("2. Simulate with low error rate")
-        print("3. Simulate with high error rate")
-        print("4. Simulate eavesdropping attempt")
-        print("5. Exit")
+        print("[1] Simulate with 0 error")
+        print("[2] Simulate with low error rate")
+        print("[3] Simulate with high error rate")
+        print("[4] Simulate eavesdropping attempt")
+        print("[5] Exit")
         choice = input("Enter your choice (1/2/3/4/5): ")
 
         if choice == "1":
