@@ -216,7 +216,7 @@ def main():
             print()
 
         elif choice == "2":
-            quantum_communication(0.05, num_iterations)
+            quantum_communication(0.075, num_iterations)
             print()
         elif choice == "3":
             quantum_communication(0.2, num_iterations)
